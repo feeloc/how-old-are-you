@@ -2,8 +2,9 @@
 <html>
 <head>
     <title>LeanEngine</title>
-    <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/ui/semantic.min.css">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
 
@@ -21,7 +22,7 @@
             <div class="twelve wide column">
                 <div class="ui five cards">
                     <% for(var i=0;i<20;i++){ %>
-                    <div class="ui card">
+                    <div class="ui card animated bounceInDown" style="animation-delay: <%= i * 0.2 %>s">
                         <div class="content">
                             <div class="right floated meta">14h</div>
                             <img class="ui avatar image" src="http://semantic-ui.com/images/avatar/large/elliot.jpg"> Elliot
