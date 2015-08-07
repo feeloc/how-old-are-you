@@ -1,3 +1,25 @@
+body {
+    /*overflow: hidden;*/
+}
+
 .ui.container {
     width: 100% !important;
 }
+
+.border-left {
+    border-left: 1px solid #CCC;
+}
+
+[v-repeat] {
+    display: none;
+}
+
+.cards, .comment-content {
+    overflow-y: auto;
+}
+
+.comments {
+    display: flex;
+    flex-direction: column;
+}
+

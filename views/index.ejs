@@ -20,7 +20,7 @@
     <div class="ui container">
         <div class="ui grid">
             <div class="twelve wide column">
-                <div class="ui five cards">
+                <div class="ui four cards">
                     <% for(var i=0;i<20;i++){ %>
                     <div class="ui card animated bounceInDown" style="animation-delay: <%= i * 0.2 %>s">
                         <div class="content">
@@ -48,7 +48,35 @@
                     <% } %>
                 </div>
             </div>
-            <div class="four wide column">2</div>
+            <div class="four wide column border-left">
+                <div class="ui comments">
+                    <h3 class="ui dividing header">实时匿名聊天</h3>
+                    <div class="comment-content">
+                        <div v-repeat="comments" class="comment animated fadeInUp">
+                            <a class="avatar">
+                                <img src="{{avatar}}">
+                            </a>
+                            <div class="content">
+                                <a class="author">{{name}}</a>
+                                <div class="metadata">
+                                    <span class="date">{{time}}</span>
+                                </div>
+                                <div class="text">
+                                    {{content}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="ui reply form">
+                        <div class="field">
+                            <textarea style="height: 80px;min-height: 0;" v-model="commentText"></textarea>
+                        </div>
+                        <div id="allBtn" v-on="click: add" class="ui blue labeled submit icon button mini">
+                            <i class="icon edit"></i>来一发
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -56,25 +84,9 @@
 <script src="http://lib.sinaapp.com/js/jquery/2.0.3/jquery-2.0.3.min.js"></script>
 <script src="/ui/semantic.min.js"></script>
 <script src="https://cdn.wilddog.com/js/client/current/wilddog.js"></script>
-<script>
-    /*var ref = new Wilddog("https://feeloc-face.wilddogio.com/message");
-     setInterval(function () {
-     ref.set({
-     "name": "Hello World!",
-     "author": "Wilddog",
-     "location": {
-     "city": "" + new Date().getTime(),
-     "zip": 100000
-     }
-     });
-     }, 1000);
-     ref.child("location/city").on("value", function (datasnapshot) {
-     console.log(datasnapshot.val());
-     });
-     ref.child("author").on("value", function (datasnapshot) {
-     console.log(datasnapshot.val());
-     });*/
-</script>
+<script src="http://vuejs.org/js/vue.min.js"></script>
+<script src="/js/moment.js"></script>
+<script src="/js/index.js"></script>
 
 </body>
 </html>
