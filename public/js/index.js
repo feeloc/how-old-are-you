@@ -1,5 +1,5 @@
 $(function () {
-    var ref = new Wilddog("https://feeloc-face.wilddogio.com/message");
+    var ref = new Wilddog("https://feeloc-face.wilddogio.com/comments");
 
     var width = $(window).width();
     var height = $(window).height();
@@ -16,9 +16,9 @@ $(function () {
 
     var names = ['张三', '李四', '王二麻子'];
     var avatars = [
-        'http://semantic-ui.com/images/avatar/small/matt.jpg',
-        'http://semantic-ui.com/images/avatar/small/elliot.jpg',
-        'http://semantic-ui.com/images/avatar/small/joe.jpg'
+        '/i/matt.jpg',
+        '/i/elliot.jpg',
+        '/i/joe.jpg'
     ];
 
     var random = function () {
@@ -35,11 +35,17 @@ $(function () {
         methods: {
             add: function () {
                 if (comment.commentText != '') {
-                    ref.set({
+                    var content = {
                         time: moment().format('MM-DD, HH:mm'),
                         content: comment.commentText,
                         name: names[random()],
                         avatar: avatars[random()]
+                    };
+                    ref.set(content);
+                    $.post('/comments', {
+                        data: JSON.stringify(content)
+                    }, function (d) {
+                        console.log(d);
                     });
                 }
             }
@@ -47,10 +53,30 @@ $(function () {
     });
 
     ref.on('value', function (datasnapshot) {
-        comment.comments.push(datasnapshot.val());
-        setTimeout(function () {
-            comment.commentText = '';
-            $commentContent.scrollTop($commentContent[0].scrollHeight);
-        }, 10);
+        if (!!datasnapshot.val()) {
+            comment.comments.push(datasnapshot.val());
+            setTimeout(function () {
+                comment.commentText = '';
+                $commentContent.scrollTop($commentContent[0].scrollHeight);
+            }, 10);
+        }
+    });
+
+    ref.set({});
+    $.get('/comments', function (d) {
+        comment.comments = d.comments;
+    }, 'json');
+
+    $('.upload').click(function () {
+        $('.modal.small').modal({
+            blurring: true
+        }).modal('show');
+        _upload();
+    });
+
+    $('.click-here').click(function () {
+        $('.ui.labeled.icon.sidebar')
+            .sidebar('toggle')
+        ;
     });
 });

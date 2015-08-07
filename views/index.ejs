@@ -1,9 +1,10 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>LeanEngine</title>
+    <title>how old are you</title>
     <link rel="stylesheet" href="/ui/semantic.min.css">
     <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/webupload/webuploader.css">
     <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
@@ -12,8 +13,11 @@
     <div class="item">
         <h1>How old are you</h1>
     </div>
-    <a class="item">
+    <a class="item upload">
         上传
+    </a>
+    <a class="item click-here">
+        千万不要点
     </a>
 </div>
 <div class="ui bottom attached segment">
@@ -21,7 +25,7 @@
         <div class="ui grid">
             <div class="twelve wide column">
                 <div class="ui four cards">
-                    <% for(var i=0;i<20;i++){ %>
+                    <% for(var i = 0;i < 5;i++){ %>
                     <div class="ui card animated bounceInDown" style="animation-delay: <%= i * 0.2 %>s">
                         <div class="content">
                             <div class="right floated meta">14h</div>
@@ -81,11 +85,62 @@
     </div>
 </div>
 
+<div class="ui modal small">
+    <div class="header">上传一张吧</div>
+    <div class="image content">
+        <img src="http://feeloc09.u.qiniudn.com/1385471521252/1385471521252.jpg?imageView/2/w/200" class="image">
+
+        <div class="description">
+            <table class="ui celled table mini">
+                <thead>
+                <tr>
+                    <th colspan="2" style="text-align: center">检测结果</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>性别</td>
+                    <td>男</td>
+                </tr>
+                <tr>
+                    <td>年龄</td>
+                    <td>31</td>
+                </tr>
+                <tr>
+                    <td>微笑指数</td>
+                    <td>90</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div id="container">
+                <div id="uploader">
+                    <div class="queueList">
+                        <div id="dndArea" class="placeholder">
+                            <div id="filePicker"></div>
+                            <p>或将照片拖到这里，单次最多可选300张</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ui left demo vertical inverted sidebar labeled icon menu">
+    <a href="http://food.tuhuangzhe.com" target="_blank" class="item">
+        <i class="home icon"></i>
+        果果的烘焙
+    </a>
+</div>
+
 <script src="http://lib.sinaapp.com/js/jquery/2.0.3/jquery-2.0.3.min.js"></script>
-<script src="/ui/semantic.min.js"></script>
 <script src="https://cdn.wilddog.com/js/client/current/wilddog.js"></script>
 <script src="http://vuejs.org/js/vue.min.js"></script>
+<script src="/ui/semantic.min.js"></script>
 <script src="/js/moment.js"></script>
+<script src="/webupload/webuploader.js"></script>
+<script src="/js/upload.js"></script>
 <script src="/js/index.js"></script>
 
 </body>
