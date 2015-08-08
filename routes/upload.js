@@ -14,7 +14,7 @@ router.post('/', function (req, res, next) {
     if (file.size == 0) {
         fs.unlinkSync(file.path);
     } else {
-        fs.readFile(file.path, function (err, data) {
+        fs.readFile('./' + file.path, function (err, data) {
             if (err) {
                 res.json({
                     status: 'error',
