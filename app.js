@@ -4,7 +4,12 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var multiparty=require('connect-multiparty');
+
 var comments = require('./routes/comments');
+var photos = require('./routes/photos');
+var upload = require('./routes/upload');
+
 var cloud = require('./cloud');
 
 var app = express();
@@ -20,6 +25,7 @@ app.use(cloud);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(multiparty({uploadDir:'./public/upload', keepExtensions:true}));
 
 // 未处理异常捕获 middleware
 app.use(function(req, res, next) {
@@ -40,9 +46,20 @@ app.use(function(req, res, next) {
 app.get('/', function(req, res) {
   res.render('index', { currentTime: new Date() });
 });
+app.get('/%7B%7Bavatar%7D%7D', function (req, res) {
+    res.redirect('/i/elliot.jpg');
+});
+app.get('/%7B%7Bphoto.file.url%7D%7D', function (req, res) {
+    res.redirect('/i/elliot.jpg');
+});
+app.get('/%7B%7Bphoto.avatar%7D%7D', function (req, res) {
+    res.redirect('/i/elliot.jpg');
+});
 
 // 可以将一类的路由单独保存在一个文件中
 app.use('/comments', comments);
+app.use('/photos', photos);
+app.use('/upload', upload);
 
 // 如果任何路由都没匹配到，则认为 404
 // 生成一个异常让后面的 err handler 捕获
