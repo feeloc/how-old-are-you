@@ -25,7 +25,7 @@ app.use(cloud);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(multiparty({uploadDir: './public/upload', keepExtensions: true}));
+app.use(multiparty({keepExtensions: true}));
 
 // 未处理异常捕获 middleware
 app.use(function(req, res, next) {
