@@ -55,6 +55,9 @@ app.get('/%7B%7Bphoto.file.url%7D%7D', function (req, res) {
 app.get('/%7B%7Bphoto.avatar%7D%7D', function (req, res) {
     res.redirect('/i/elliot.jpg');
 });
+app.get('/comment', function (req, res) {
+    res.render('comment', {currentTime: new Date()});
+});
 
 // 可以将一类的路由单独保存在一个文件中
 app.use('/comments', comments);

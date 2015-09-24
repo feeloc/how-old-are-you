@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>how old are you</title>
+    <link rel="stylesheet" href="/ui/semantic.min.css">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+
+<div class="ui bottom attached segment" style="border: 0">
+    <div class="ui container" style="width: auto!important;">
+        <div class="ui grid">
+            <div class="ui comments" style="width: 100%;">
+                <h3 class="">&nbsp;</h3>
+
+                <div class="comment-content">
+                    <div v-repeat="comments" class="comment animated fadeInUp"
+                         style="width: 100%;margin-bottom:20px;">
+                        <a class="avatar">
+                            <img src="{{avatar}}">
+                        </a>
+
+                        <div class="content">
+                            <a class="author">{{name}}</a>
+
+                            <div class="metadata">
+                                <span class="date">{{time}}</span>
+                            </div>
+                            <div class="text">
+                                <div class="ignored ui popup right center transition visible animated bounceIn"
+                                     style="position: relative;display: inline-block!important; left: 0;top: 0;right: auto;bottom: auto;">
+                                    <div class="content">{{content}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="ui reply form">
+                    <div class="field">
+                            <textarea v-on="keyup: addByKey" style="height: 80px;min-height: 0;" v-model="commentText"
+                                      placeholder="control+回车 发送"></textarea>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="http://lib.sinaapp.com/js/jquery/2.0.3/jquery-2.0.3.min.js"></script>
+<script src="https://cdn.wilddog.com/js/client/current/wilddog.js"></script>
+<script src="/js/vue.min.js"></script>
+<script src="/ui/semantic.min.js"></script>
+<script src="/js/moment.js"></script>
+<script src="/js/comment.js"></script>
+
+</body>
+</html>
