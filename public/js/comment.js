@@ -1,12 +1,12 @@
 $(function () {
     var ref = new Wilddog("https://feeloc-face.wilddogio.com/comments");
-    var height = $(window).height() - 20;
+    //var height = $(window).height() - 20;
 
-    var $comments = $('.ui.comments');
-    var $commentContent = $('.comment-content');
+    //var $comments = $('.ui.comments');
+    //var $commentContent = $('.comment-content');
 
-    $comments.css({height: height});
-    $commentContent.css({height: height - $('h3').outerHeight() - $('form').outerHeight()});
+    //$comments.css({height: height});
+    //$commentContent.css({height: height - $('h3').outerHeight() - $('form').outerHeight()});
 
     var names = ['张三', '李四', '王二麻子'];
     var avatars = [
@@ -40,7 +40,7 @@ $(function () {
     var afterAddComment = function () {
         setTimeout(function () {
             comment.commentText = '';
-            $commentContent.scrollTop($commentContent[0].scrollHeight - $commentContent.height() - 50);
+            //$commentContent.scrollTop($commentContent[0].scrollHeight - $commentContent.height() - 50);
         }, 10);
     };
 
